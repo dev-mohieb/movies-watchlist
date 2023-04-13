@@ -16,7 +16,7 @@ const errorEl = `
 async function fetchMoviesTitles(search, num) {
   // fetch 10 movie titles using the ' ?s= ' query
   const res = await fetch(
-    `http://www.omdbapi.com/?s=${search}&apikey=${KEY}&page=${num}`
+    `https://www.omdbapi.com/?s=${search}&apikey=${KEY}&page=${num}`
   );
   const movies = await res.json();
   // push titles into array of titles
@@ -35,7 +35,7 @@ async function fetchMoviesTitles(search, num) {
 async function fetchMoviesDetails(titles) {
   // loop over each titles and fetch each movie individually using the ' ?t= ' query
   for (let title of titles) {
-    const res = await fetch(`http://www.omdbapi.com/?t=${title}&apikey=${KEY}`);
+    const res = await fetch(`https://www.omdbapi.com/?t=${title}&apikey=${KEY}`);
     const movieWithDetails = await res.json();
     // create new movie objects based on the recieved movies to add two
     // properties: a uuid, and a isInWatchlist boolean
