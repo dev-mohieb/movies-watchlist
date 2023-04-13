@@ -1,4 +1,4 @@
-import { fetchMoviesTitles } from "./js/utils.js";
+import { fetchMoviesTitles } from "/js/utils.js";
 
 const searchForm = document.querySelector("#search-form");
 const searchBtn = document.querySelector("#search-btn");
