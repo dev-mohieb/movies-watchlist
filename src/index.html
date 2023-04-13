@@ -1,57 +1,35 @@
 <!DOCTYPE html>
-<html
-  lang="en"
-  class="dark"
->
+<html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      http-equiv="X-UA-Compatible"
-      content="IE=edge"
-    />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0"
-    />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Title & Favicon -->
     <title>Movies Watchlist | Mohieb</title>
     <!-- Font Awesome -->
     <script
       src="https://kit.fontawesome.com/fe6bf42745.js"
-      crossorigin="anonymous"
-    ></script>
+      crossorigin="anonymous"></script>
     <!-- Font -->
-    <link
-      rel="preconnect"
-      href="https://fonts.googleapis.com"
-    />
-    <link
-      rel="preconnect"
-      href="https://fonts.gstatic.com"
-      crossorigin
-    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap"
-      rel="stylesheet"
-    />
+      rel="stylesheet" />
     <!-- CSS and JS -->
-    <link
-      rel="stylesheet"
-      href="/dist/output.css"
-    />
-    <script
-      src="index.js"
-      type="module"
-      defer
-    ></script>
+    <link rel="stylesheet" href="./dist/output.css" />
+    <script src="./index.js" type="module" defer></script>
   </head>
   <body class="min-w-[380px] bg-white font-inter dark:bg-main-dark">
+    <!-- <nav class="flex flex-col justify-center px-2 py-1 h-5 w-full bg-gray-50 text-gray-950 dark:bg-gray-700 dark:text-gray-300">
+      <button class="self-end">
+        <i class="fa-solid fa-sun text-yellow-500"></i>
+      </button>
+    </nav> -->
     <header
-      class="relative flex h-[210px] items-center justify-between bg-header-s bg-cover bg-center bg-no-repeat text-white md:bg-header-m lg:bg-header-l"
-    >
+      class="relative flex h-[210px] items-center justify-between bg-header-s bg-cover bg-center bg-no-repeat text-white md:bg-header-m lg:bg-header-l">
       <section
-        class="container mx-auto flex h-auto w-full items-center justify-between px-2 sm:px-6 md:px-10 lg:px-20 xl:px-28"
-      >
+        class="container mx-auto flex h-auto w-full items-center justify-between px-2 sm:px-6 md:px-10 lg:px-20 xl:px-28">
         <h1 class="text-4xl font-extrabold sm:text-[42px] md:text-5xl">
           Find your film
         </h1>
@@ -65,41 +43,36 @@
       <form
         id="search-form"
         action=""
-        class="absolute -bottom-4 flex w-full justify-center"
-      >
+        class="absolute -bottom-4 flex w-full justify-center">
         <section
-          class="flex overflow-hidden rounded-md shadow-sm shadow-gray-400 dark:shadow-none"
-        >
-          <article class="bg-white py-[6px] pl-4 dark:bg-accent-dark outline-none">
+          class="flex overflow-hidden rounded-md shadow-sm shadow-gray-400 dark:shadow-none">
+          <article
+            class="bg-white py-[6px] pl-4 outline-none dark:bg-accent-dark">
             <i
-              class="fa-solid fa-magnifying-glass text-gray-500 dark:text-gray-300 md:text-base"
-            ></i>
+              class="fa-solid fa-magnifying-glass text-gray-500 dark:text-gray-300 md:text-base"></i>
             <input
-              class="mr-[6px] h-full rounded-md bg-transparent px-2 text-sm font-medium text-gray-700 selection:bg-sky-400/70 placeholder:text-gray-500 autofill:bg-sky-300 dark:text-white dark:selection:bg-gray-500 dark:placeholder:text-[#A5A5A5] dark:autofill:bg-gray-400 md:text-base outline-none dark:outline-none"
+              class="mr-[6px] h-full rounded-md bg-transparent px-2 text-sm font-medium text-gray-700 outline-none selection:bg-sky-400/70 placeholder:text-gray-500 autofill:bg-sky-300 dark:text-white dark:outline-none dark:selection:bg-gray-500 dark:placeholder:text-[#A5A5A5] dark:autofill:bg-gray-400 md:text-base"
               type="text"
               name="search"
               id="search"
               placeholder="Search for a movie"
-              required
-            />
+              required />
           </article>
           <button
-            class="cursor-default border-l active:scale-95 transition-all hover:bg-slate-200 border-gray-300 bg-slate-100 px-8 font-medium text-gray-700 dark:border-none dark:bg-[#4B4B4B] dark:text-white md:cursor-pointer"
+            class="cursor-default border-l border-gray-300 bg-slate-100 px-8 font-medium text-gray-700 transition-all hover:bg-slate-200 active:scale-95 disabled:cursor-not-allowed disabled:bg-gray-300 dark:border-none dark:bg-[#4B4B4B] dark:text-white md:cursor-pointer"
             type="submit"
-          >
+            id="search-btn">
             Search
           </button>
         </section>
       </form>
     </header>
     <main
-      class="flex h-screen flex-col md:flex-row md:flex-wrap items-center justify-center md:justify-evenly py-4"
-    >
-      <!-- Start exploring -->
+      class="flex h-screen flex-col py-4 md:flex-row md:flex-wrap md:justify-evenly">
+      <!-- Start exploring  -->
       <article
         id="start-exploring"
-        class="text-center text-lg text-accent dark:text-accent-dark md:text-xl lg:text-2xl"
-      >
+        class="m-auto text-center text-lg text-accent dark:text-accent-dark md:text-xl lg:text-2xl">
         <i class="fa-solid fa-film text-6xl md:text-7xl lg:text-8xl"></i>
         <p class="font-bold">Start Exploring</p>
       </article>
