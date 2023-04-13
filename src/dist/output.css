@@ -747,7 +747,7 @@ video {
 }
 
 .bg-header-s {
-  background-image: url('/src/images/header-s.jpg');
+  background-image: url('/images/header-s.jpg');
 }
 
 .bg-cover {
@@ -1166,7 +1166,7 @@ video {
   }
 
   .md\:bg-header-m {
-    background-image: url('/src/images/header-m.jpg');
+    background-image: url('/images/header-m.jpg');
   }
 
   .md\:px-10 {
@@ -1210,7 +1210,7 @@ video {
   }
 
   .lg\:bg-header-l {
-    background-image: url('/src/images/header-l.jpg');
+    background-image: url('/images/header-l.jpg');
   }
 
   .lg\:px-20 {
