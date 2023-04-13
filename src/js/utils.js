@@ -3,6 +3,15 @@ import { moviesArr, titlesArr } from "../index.js";
 
 const KEY = "ff27a997";
 const main = document.querySelector("main");
+const errorEl = `
+    <article
+      id="start-exploring"
+      class="text-center m-auto text-lg text-accent dark:text-accent-dark md:text-xl lg:text-2xl">
+      <p class="font-bold">
+        Unable to find what you’re looking for.<br> Please try another search.
+      </p>
+    </article>
+    `;
 
 async function fetchMoviesTitles(search, num) {
   // fetch 10 movie titles using the ' ?s= ' query
@@ -13,16 +22,7 @@ async function fetchMoviesTitles(search, num) {
   // push titles into array of titles
   if (movies.Response === "False") {
     main.classList.add("justify-center");
-    main.innerHTML = `
-        <article
-          id="start-exploring"
-          class="text-center text-lg text-accent dark:text-accent-dark md:text-xl lg:text-2xl"
-        >
-          <p class="font-bold">
-            Unable to find what you’re looking for.<br> Please try another search.
-          </p>
-        </article>
-      `;
+    main.innerHTML = errorEl;
   } else {
     for (let movie of movies.Search) {
       !titlesArr.includes(movie.Title) ? titlesArr.push(movie.Title) : "";
@@ -56,7 +56,7 @@ class Movie {
   }
 }
 
-function getMoviesHtml(movies) {
+function getMoviesHtml(movies, btn) {
   return movies
     .map((movie) => {
       // destructure each movie
@@ -72,7 +72,7 @@ function getMoviesHtml(movies) {
 
       return `
       <section
-      class="flex h-[212px] items-center gap-6 border-b border-[#E5E7EB] py-8 text-subtitles dark:border-[#2C2C2C] dark:text-white sm:h-[234px] md:h-[254px] lg:h-[274px]"
+      class="flex h-[212px] items-center gap-6 border-b border-[#E5E7EB] py-8 text-subtitles dark:border-[#2C2C2C] dark:text-white px-2 sm:px-4 sm:h-[234px] md:h-[254px] lg:h-[274px]"
       >
       <img
         class="h-full w-[105px] rounded object-cover sm:w-[125px] md:w-[145px] lg:w-[160px]"
@@ -101,7 +101,7 @@ function getMoviesHtml(movies) {
             data-uuid="${uuid}"
             class="flex cursor-default items-center gap-[6px] text-sm md:cursor-pointer"
           >
-            <i class="fa-solid fa-circle-plus text-lg"></i>
+            <i class="fa-solid fa-circle-${btn} text-lg"></i>
             Watchlist
           </button>
         </article>
@@ -117,10 +117,8 @@ function getMoviesHtml(movies) {
 }
 
 function renderMovies() {
-  // adjust main for movies
-  main.classList.remove("justify-center");
   // call getMoviesHtml with moviesArr and render it's returned value into main
-  main.innerHTML = getMoviesHtml(moviesArr);
+  main.innerHTML = getMoviesHtml(moviesArr, "plus");
 }
 
-export { fetchMoviesTitles };
+export { fetchMoviesTitles, getMoviesHtml };
