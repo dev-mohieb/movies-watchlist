@@ -7,9 +7,9 @@ module.exports = {
         'inter': 'Inter, sans-serif'
       },
       backgroundImage: {
-        'header-l': "url('images/header-l.jpg')",
-        'header-m': "url('images/header-m.jpg')",
-        'header-s': "url('images/header-s.jpg')"
+        'header-l': "url('/images/header-l.jpg')",
+        'header-m': "url('/images/header-m.jpg')",
+        'header-s': "url('/images/header-s.jpg')"
       },
       backgroundColor: {
         'main-dark': '#121212',
