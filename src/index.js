@@ -41,7 +41,8 @@ searchForm.addEventListener("submit", (e) => {
 document.addEventListener("click", (e) => {
   if (e.target.dataset.imdbId) {
     handleWatchlist(e.target.dataset.imdbId);
-    e.target.innerHtml = `<em>Added to watchlist</em>`
+    e.target.firstChild.classList.replace('fa-circle', 'fa-circle-check')
+    e.target.firstChild.style.color = '#0bf207'
   }
 });
 
