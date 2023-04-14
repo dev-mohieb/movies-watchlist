@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Title & Favicon -->
-    <title>Movies Watchlist | Mohieb</title>
+    <title>Watchlist | Mohieb</title>
     <!-- Font Awesome -->
     <script
       src="https://kit.fontawesome.com/fe6bf42745.js"
@@ -18,12 +18,16 @@
       rel="stylesheet" />
     <!-- CSS and JS -->
     <link rel="stylesheet" href="/dist/output.css" />
-    <script src="/js/watchlist.js" defer></script>
+    <script src="/js/watchlist.js" defer type="module"></script>
   </head>
-  <body class="min-w-[380px] bg-white font-inter dark:bg-main-dark">
-
+  <body class="min-w-[400px] bg-white font-inter dark:bg-main-dark">
     <header
-      class="flex h-[210px] items-center justify-between bg-header-s bg-cover bg-center bg-no-repeat text-white md:bg-header-m lg:bg-header-l">
+      class="relative flex h-[210px] items-center justify-between bg-header-s bg-cover bg-center bg-no-repeat text-white md:bg-header-m lg:bg-header-l">
+      <button
+        id="toggle"
+        class="absolute right-1 top-1 h-[36px] w-[40px] rounded-md bg-main-dark/50">
+        <i class="fa-solid fa-sun text-yellow-500"></i>
+      </button>
       <section
         class="container mx-auto flex h-auto w-full items-center justify-between px-2 sm:px-6 md:px-10 lg:px-20 xl:px-28">
         <h1 class="text-4xl font-extrabold sm:text-[42px] md:text-5xl">
@@ -37,7 +41,7 @@
       </section>
     </header>
     <main
-      class="flex h-screen flex-col py-4 md:flex-row md:flex-wrap md:justify-evenly">
+      class="mx-auto flex h-[75vh] max-w-[1280px] flex-col items-center py-4 lg:flex-row lg:flex-wrap lg:justify-center">
       <!-- Empty watchlist -->
       <article
         class="m-auto text-center text-lg text-accent dark:text-accent-dark md:text-xl lg:text-2xl">
