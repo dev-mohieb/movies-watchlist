@@ -1,13 +1,29 @@
-import { fetchMoviesTitles } from "/js/utils.js";
+import {
+  fetchMoviesTitles,
+  moviesArr,
+  titlesArr,
+  handleToggle,
+  darkMode,
+  lightMode,
+} from "/js/utils.js";
 
+const toggleBtn = document.querySelector("#toggle");
 const searchForm = document.querySelector("#search-form");
-const searchBtn = document.querySelector("#search-btn");
-const moviesArr = [];
-const titlesArr = [];
+// if there's a watchlist array in storage, set it to that,
+// otherwise, set it to an empty array so it can update itself
+// once a movie gets added to the watchlist
 let watchlist = JSON.parse(localStorage.getItem("watchlist"))
   ? JSON.parse(localStorage.getItem("watchlist"))
   : [];
+
+// will later implement search pages
 let page = 1;
+
+// Check mode and set it
+localStorage.getItem("mode") === "dark" ? darkMode() : lightMode();
+
+// Listen for clicks on toggleBtn and call handleToggle
+toggleBtn.addEventListener("click", handleToggle);
 
 searchForm.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -17,22 +33,20 @@ searchForm.addEventListener("submit", (e) => {
   // get searched input
   const formData = new FormData(searchForm);
   const searchItem = formData.get("search").trim();
-  // Disable search button
-  searchBtn.disabled = true;
+
   // fetch titles using searched input
   fetchMoviesTitles(searchItem, page);
-  searchBtn.disabled = false;
 });
 
 document.addEventListener("click", (e) => {
-  if (e.target.dataset.uuid) {
-    handleWatchlist(e.target.dataset.uuid);
+  if (e.target.dataset.imdbId) {
+    handleWatchlist(e.target.dataset.imdbId);
   }
 });
 
-function handleWatchlist(uuid) {
+function handleWatchlist(imdbId) {
   const selectedMovie = moviesArr.filter((movie) => {
-    return movie.uuid === uuid;
+    return movie.imdbID === imdbId;
   })[0];
   // Check wether the movie's already in the watchlist
   !watchlist.includes(selectedMovie) ? watchlist.unshift(selectedMovie) : "";
