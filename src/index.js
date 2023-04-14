@@ -41,10 +41,8 @@ searchForm.addEventListener("submit", (e) => {
 document.addEventListener("click", (e) => {
   if (e.target.dataset.imdbId) {
     handleWatchlist(e.target.dataset.imdbId);
-    console.log(e.target)
-    console.log(e.target.children)
-    // e.target.firstChild.classList.replace('fa-circle', 'fa-circle-check')
-    // e.target.firstChild.style.color = '#0bf207'
+    e.target.children[0].classList.replace('fa-circle', 'fa-circle-check')
+    e.target.children[0].style.color = '#0bf207'
   }
 });
 
