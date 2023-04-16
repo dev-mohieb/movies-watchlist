@@ -36,24 +36,7 @@ searchForm.addEventListener("submit", (e) => {
 
   // fetch titles using searched input
   fetchMoviesTitles(searchItem, page);
-  checkWatchlisted()
 });
-
-function checkWatchlisted() {
-  let watchlistedBtns = []
-  localStorage.length > 0
-    ? watchlistedBtns = document.querySelectorAll('.watchlist-btn').filter(btn => {
-      return btn.imdbId === localStorage.getItem('watchlist').forEach(element => {
-        return element.imdbId
-      });
-    })
-    : '';
-
-    watchlistedBtns.forEach(btn => {
-      btn.classList.replace('fa-circle-plus', 'fa-circle-check');
-      btn.style.color = '#24f820';
-    })
-}
 
 document.addEventListener("click", (e) => {
   if (e.target.dataset.imdbId) {
@@ -67,6 +50,7 @@ function handleWatchlist(imdbId) {
   const selectedMovie = moviesArr.filter((movie) => {
     return movie.imdbID === imdbId;
   })[0];
+  selectedMovie.isInWatchlist = true;
   // Check wether the movie's already in the watchlist
   !watchlist.includes(selectedMovie) ? watchlist.unshift(selectedMovie) : "";
   // Add the new watchlist to localStorage
