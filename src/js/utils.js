@@ -67,7 +67,7 @@ function getMoviesHtml(movies, btn) {
 
       return `
       <section
-      class="flex h-[212px] items-center gap-3 border-b border-[#E5E7EB] py-8 text-subtitles dark:border-[#2C2C2C] dark:text-white px-2 sm:px-4 sm:h-[234px] md:h-[254px] lg:h-[274px]"
+      class="flex h-[212px] justify-center gap-3 border-b border-[#E5E7EB] py-8 text-subtitles dark:border-[#2C2C2C] dark:text-white px-2 sm:px-4 sm:h-[234px] md:h-[254px] lg:h-[274px] w-full lg:w-1/2"
       >
       <img
         class="h-full w-[105px] rounded object-cover sm:w-[125px] md:w-[145px] lg:w-[160px]"
@@ -94,7 +94,7 @@ function getMoviesHtml(movies, btn) {
           <p class="">${genre}</p>
           <button
             data-imdb-id="${imdbID}"
-            class="flex cursor-default items-center gap-[6px] text-sm md:cursor-pointer px-1"
+            class="flex cursor-default items-center gap-[6px] text-sm md:cursor-pointer px-1 active:scale-95 hover:scale-105 transition-transform disabled:active:scale-100 disabled:hover:scale-100"
           >
             <i class="fa-solid fa-circle-${btn} text-lg pointer-events-none"></i>
           </button>
