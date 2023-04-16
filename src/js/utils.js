@@ -94,7 +94,7 @@ function getMoviesHtml(movies, btn) {
           <p class="">${genre}</p>
           <button
             data-imdb-id="${imdbID}"
-            class="flex cursor-default items-center gap-[6px] text-sm md:cursor-pointer px-1"
+            class="watchlist-btn flex cursor-default items-center gap-[6px] text-sm md:cursor-pointer px-1"
           >
             <i class="fa-solid fa-circle-${btn} text-lg pointer-events-none"></i>
           </button>

@@ -36,13 +36,30 @@ searchForm.addEventListener("submit", (e) => {
 
   // fetch titles using searched input
   fetchMoviesTitles(searchItem, page);
+  checkWatchlisted()
 });
+
+function checkWatchlisted() {
+  let watchlistedBtns = []
+  localStorage.length > 0
+    ? watchlistedBtns = document.querySelectorAll('.watchlist-btn').filter(btn => {
+      return btn.imdbId === localStorage.getItem('watchlist').forEach(element => {
+        return element.imdbId
+      });
+    })
+    : '';
+
+    watchlistedBtns.forEach(btn => {
+      btn.classList.replace('fa-circle-plus', 'fa-circle-check');
+      btn.style.color = '#24f820';
+    })
+}
 
 document.addEventListener("click", (e) => {
   if (e.target.dataset.imdbId) {
     handleWatchlist(e.target.dataset.imdbId);
-    e.target.children[0].classList.replace('fa-circle-plus', 'fa-circle-check')
-    e.target.children[0].style.color = '#24f820'
+    e.target.children[0].classList.replace('fa-circle-plus', 'fa-circle-check');
+    e.target.children[0].style.color = '#24f820';
   }
 });
 
