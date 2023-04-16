@@ -41,6 +41,8 @@ searchForm.addEventListener("submit", (e) => {
 document.addEventListener("click", (e) => {
   if (e.target.dataset.imdbId) {
     handleWatchlist(e.target.dataset.imdbId);
+    e.target.children[0].classList.replace('fa-circle-plus', 'fa-circle-check');
+    e.target.children[0].style.color = '#24f820';
   }
 });
 
@@ -48,6 +50,7 @@ function handleWatchlist(imdbId) {
   const selectedMovie = moviesArr.filter((movie) => {
     return movie.imdbID === imdbId;
   })[0];
+  selectedMovie.isInWatchlist = true;
   // Check wether the movie's already in the watchlist
   !watchlist.includes(selectedMovie) ? watchlist.unshift(selectedMovie) : "";
   // Add the new watchlist to localStorage
