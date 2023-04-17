@@ -21,7 +21,7 @@ const main = document.querySelector("main");
 
 async function fetchMoviesTitles(search, num) {
   moviesArr.length > 0 
-    ? main.innerHTML += loading
+    ? ''
     : main.innerHTML = loading
   // fetch 10 movie titles using the ' ?s= ' query
   const res = await fetch(
