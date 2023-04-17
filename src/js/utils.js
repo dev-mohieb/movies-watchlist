@@ -20,9 +20,7 @@ const KEY = "ff27a997";
 const main = document.querySelector("main");
 
 async function fetchMoviesTitles(search, num) {
-  moviesArr.length > 0 
-    ? ''
-    : main.innerHTML = loading
+  main.innerHTML = loading
   // fetch 10 movie titles using the ' ?s= ' query
   const res = await fetch(
     `https://www.omdbapi.com/?s=${search}&apikey=${KEY}&page=${num}`
@@ -119,9 +117,7 @@ function getMoviesHtml(movies, btn) {
 
 function renderMovies() {
   // call getMoviesHtml with moviesArr and render it's returned value into main
-  moviesArr.length > 0 
-    ? main.innerHTML += getMoviesHtml(moviesArr, "plus")
-    : main.innerHTML = getMoviesHtml(moviesArr, "plus")
+  main.innerHTML = getMoviesHtml(moviesArr, "plus")
 }
 
 // Seperate functions for each mode - might refactor in the future
