@@ -985,16 +985,16 @@ video {
 
 .scrollbar::-webkit-scrollbar-track {
   border-radius: 9999px;
-  background: #363535;
+  background: #36353581;
 }
 
 .scrollbar::-webkit-scrollbar-thumb {
-  background: #514E4E;
+  background: #514e4e79;
   border-radius: 9999px;
 }
 
 .scrollbar::-webkit-scrollbar-thumb:hover {
-  background: #6C6666;
+  background: #6c66667e;
 }
 
 .selection\:bg-sky-400\/70 *::-moz-selection {
