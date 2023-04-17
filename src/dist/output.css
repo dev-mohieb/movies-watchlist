@@ -619,10 +619,6 @@ video {
   display: flex;
 }
 
-.aspect-\[8\/6\] {
-  aspect-ratio: 8/6;
-}
-
 .aspect-\[2\/1\] {
   aspect-ratio: 2/1;
 }
@@ -635,8 +631,8 @@ video {
   height: 36px;
 }
 
-.h-\[465px\] {
-  height: 465px;
+.h-\[400px\] {
+  height: 400px;
 }
 
 .h-\[75vh\] {
@@ -656,8 +652,8 @@ video {
   height: 100%;
 }
 
-.h-\[400px\] {
-  height: 400px;
+.h-\[375px\] {
+  height: 375px;
 }
 
 .w-\[40px\] {

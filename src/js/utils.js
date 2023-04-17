@@ -67,7 +67,7 @@ function getMoviesHtml(movies, btn) {
 
       return `
       <section
-      class="flex flex-col w-full h-[400px] items-center gap-3 border-b border-[#E5E7EB] py-3 text-subtitles dark:border-[#2C2C2C] dark:text-white mt-4 pb-8 px-2 sm:px-4 md:w-1/2 lg:w-1/3"
+      class="flex flex-col w-full h-[375px] items-center gap-3 border-b border-[#E5E7EB] py-3 text-subtitles dark:border-[#2C2C2C] dark:text-white mt-4 pb-8 px-2 sm:px-4 md:w-1/2 lg:w-1/3"
       >
       <img
         class="h-full w-[90%] aspect-[2/1] max-w-[400px] rounded-md object-cover"
