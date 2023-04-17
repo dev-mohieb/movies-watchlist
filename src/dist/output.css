@@ -623,6 +623,10 @@ video {
   aspect-ratio: 8/6;
 }
 
+.aspect-\[2\/1\] {
+  aspect-ratio: 2/1;
+}
+
 .h-\[210px\] {
   height: 210px;
 }
@@ -650,6 +654,10 @@ video {
 
 .h-full {
   height: 100%;
+}
+
+.h-\[400px\] {
+  height: 400px;
 }
 
 .w-\[40px\] {
@@ -989,10 +997,6 @@ video {
 
 .scrollbar::-webkit-scrollbar-thumb:hover {
   background: #6c66667e;
-}
-
-.rendering {
-  image-rendering: pixelated;
 }
 
 .selection\:bg-sky-400\/70 *::-moz-selection {
