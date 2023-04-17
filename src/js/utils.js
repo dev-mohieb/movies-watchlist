@@ -67,25 +67,25 @@ function getMoviesHtml(movies, btn) {
 
       return `
       <section
-      class="flex flex-col w-full h-[400px] items-center gap-3 border-b border-[#E5E7EB] py-3 text-subtitles dark:border-[#2C2C2C] dark:text-white px-2 sm:px-4 md:w-1/2 xl:w-1/3"
+      class="flex flex-col w-full h-[465px] items-center gap-3 border-b border-[#E5E7EB] py-3 text-subtitles dark:border-[#2C2C2C] dark:text-white px-2 sm:px-4 md:w-1/2 xl:w-1/3"
       >
       <img
-        class="h-full w-[90%] aspect-[2/1] rounded object-cover"
+        class="h-full w-[90%] aspect-[8/6] max-w-[400px] rounded object-cover"
         src="${poster === "N/A" ? "/images/no-image-placeholder.png" : poster}"
         width="100"
         height="212"
         alt=""
       />
       <!-- Movie info -->
-      <section class="h-full max-w-[400px] w-[90%] overflow-y-scroll space-y-1 scrollbar">
+      <section class="h-full max-w-[400px] w-[90%] overflow-y-auto space-y-1 scrollbar">
         <!-- Title -->
-        <article class="flex items-center text-xs md:text-sm lg:text-base">
+        <article class="flex items-center text-xs md:text-sm lg:text-base relative">
           <h2
-            class="text-lg font-medium text-black dark:text-white md:text-xl lg:text-2xl"
+            class="text-lg font-medium text-black dark:text-white md:text-xl lg:text-2xl max-w-[260px]"
           >
             ${title}
           </h2>
-          <article class="flex items-center ml-auto gap-2 mr-2 text-sm">
+          <article class="absolute right-0 top-0 flex items-center ml-auto gap-2 mr-2 text-sm">
             <i class="fa-solid fa-star text-star"></i>
             <p class="text-[15px]">${rating}</p>
           </article>
@@ -96,7 +96,7 @@ function getMoviesHtml(movies, btn) {
           <p class="">${genre}</p>
           <button
             data-imdb-id="${imdbID}"
-            class="ml-auto flex cursor-default items-center gap-[6px] text-sm md:cursor-pointer px-1 active:scale-95 hover:scale-105 transition-transform disabled:active:scale-100 disabled:hover:scale-100"
+            class="ml-auto mr-2 flex cursor-default items-center gap-[6px] text-sm md:cursor-pointer px-1 active:scale-95 hover:scale-105 transition-transform disabled:active:scale-100 disabled:hover:scale-100"
           >
             <i class="fa-solid fa-circle-${btn} text-lg pointer-events-none"></i>
           </button>
