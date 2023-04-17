@@ -20,7 +20,6 @@ const KEY = "ff27a997";
 const main = document.querySelector("main");
 
 async function fetchMoviesTitles(search, num) {
-  searchInput = search;
   moviesArr.length > 0 
     ? main.innerHTML += loading
     : main.innerHTML = loading
