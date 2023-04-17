@@ -587,16 +587,12 @@ video {
   margin-bottom: 0.75rem;
 }
 
-.ml-1 {
-  margin-left: 0.25rem;
-}
-
-.ml-2 {
-  margin-left: 0.5rem;
-}
-
 .ml-auto {
   margin-left: auto;
+}
+
+.mr-2 {
+  margin-right: 0.5rem;
 }
 
 .mr-\[6px\] {
@@ -605,14 +601,6 @@ video {
 
 .mt-2 {
   margin-top: 0.5rem;
-}
-
-.mr-1 {
-  margin-right: 0.25rem;
-}
-
-.mr-2 {
-  margin-right: 0.5rem;
 }
 
 .flex {
@@ -710,10 +698,6 @@ video {
 
 .gap-\[6px\] {
   gap: 6px;
-}
-
-.gap-1 {
-  gap: 0.25rem;
 }
 
 .space-y-1 > :not([hidden]) ~ :not([hidden]) {
@@ -847,6 +831,10 @@ video {
   line-height: 1;
 }
 
+.text-\[15px\] {
+  font-size: 15px;
+}
+
 .text-lg {
   font-size: 1.125rem;
   line-height: 1.75rem;
@@ -865,15 +853,6 @@ video {
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
-}
-
-.text-base {
-  font-size: 1rem;
-  line-height: 1.5rem;
-}
-
-.text-\[15px\] {
-  font-size: 15px;
 }
 
 .font-bold {
@@ -968,6 +947,26 @@ video {
   transition-property: transform;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
+}
+
+.scrollbar::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+.scrollbar::-webkit-scrollbar-track {
+  border-radius: 9999px;
+  background: #363535;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+  background: #514E4E;
+  border-radius: 9999px;
+  border: 1px solid #f6f7ed;
+}
+
+.scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #6C6666;
 }
 
 .selection\:bg-sky-400\/70 *::-moz-selection {
@@ -1205,14 +1204,6 @@ video {
 }
 
 @media (min-width: 1024px) {
-  .lg\:flex-row {
-    flex-direction: row;
-  }
-
-  .lg\:flex-wrap {
-    flex-wrap: wrap;
-  }
-
   .lg\:bg-header-l {
     background-image: url('/images/header-l.jpg');
   }
@@ -1253,3 +1244,4 @@ video {
     padding-right: 7rem;
   }
 }
+  
