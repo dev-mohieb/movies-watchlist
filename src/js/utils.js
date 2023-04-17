@@ -67,41 +67,43 @@ function getMoviesHtml(movies, btn) {
 
       return `
       <section
-      class="flex h-[212px] justify-center gap-3 border-b border-[#E5E7EB] py-8 text-subtitles dark:border-[#2C2C2C] dark:text-white px-2 sm:px-4 sm:h-[234px] md:h-[254px] lg:h-[274px] w-full lg:w-1/2"
+      class="flex flex-col w-full h-[400px] items-center gap-3 border-b border-[#E5E7EB] py-3 text-subtitles dark:border-[#2C2C2C] dark:text-white px-2 sm:px-4 md:w-1/2 xl:w-1/3"
       >
       <img
-        class="h-full w-[105px] rounded object-cover sm:w-[125px] md:w-[145px] lg:w-[160px]"
+        class="h-full w-[90%] aspect-[2/1] rounded object-cover"
         src="${poster === "N/A" ? "/images/no-image-placeholder.png" : poster}"
         width="100"
         height="212"
         alt=""
       />
       <!-- Movie info -->
-      <section class="h-full max-w-[400px] w-full space-y-1 sm:pt-2">
+      <section class="h-full max-w-[400px] w-[90%] overflow-y-scroll space-y-1">
         <!-- Title -->
-        <article class="flex items-center text-xs sm:text-sm md:text-base">
+        <article class="flex items-center text-xs md:text-sm lg:text-base">
           <h2
-            class="text-lg font-medium text-black dark:text-white sm:text-xl md:text-2xl"
+            class="text-lg font-medium text-black dark:text-white md:text-xl lg:text-2xl"
           >
             ${title}
           </h2>
-          <i class="fa-solid fa-star ml-2 text-star"></i>
-          <p class="ml-1">${rating}</p>
+          <article class="flex items-center ml-auto gap-2 mr-2 text-sm">
+            <i class="fa-solid fa-star text-star"></i>
+            <p class="text-[15px]">${rating}</p>
+          </article>
         </article>
         <!-- Genre + Add to watchlist -->
-        <article class="flex items-center gap-3 text-xs sm:gap-5 sm:text-sm">
+        <article class="flex items-center gap-2 text-xs">
           <p class="">${runtime}</p>
           <p class="">${genre}</p>
           <button
             data-imdb-id="${imdbID}"
-            class="flex cursor-default items-center gap-[6px] text-sm md:cursor-pointer px-1 active:scale-95 hover:scale-105 transition-transform disabled:active:scale-100 disabled:hover:scale-100"
+            class="ml-auto flex cursor-default items-center gap-[6px] text-sm md:cursor-pointer px-1 active:scale-95 hover:scale-105 transition-transform disabled:active:scale-100 disabled:hover:scale-100"
           >
             <i class="fa-solid fa-circle-${btn} text-lg pointer-events-none"></i>
           </button>
         </article>
         <!-- Description -->
-        <section class="max-w-[400px] text-sm text-desc dark:text-desc-dark overflow-hidden text-ellipsis h-[100px]">
-          <p class="">
+        <section class="max-w-[400px] h-fit mt-2 text-sm text-desc dark:text-desc-dark">
+          <p>
             ${plot}
           </p>
         </section>
