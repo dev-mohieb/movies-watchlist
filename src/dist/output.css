@@ -611,6 +611,10 @@ video {
   margin-top: 0.5rem;
 }
 
+.mt-4 {
+  margin-top: 1rem;
+}
+
 .flex {
   display: flex;
 }
@@ -738,10 +742,6 @@ video {
   border-left-width: 1px;
 }
 
-.border-t {
-  border-top-width: 1px;
-}
-
 .border-\[\#E5E7EB\] {
   --tw-border-opacity: 1;
   border-color: rgb(229 231 235 / var(--tw-border-opacity));
@@ -750,11 +750,6 @@ video {
 .border-gray-300 {
   --tw-border-opacity: 1;
   border-color: rgb(209 213 219 / var(--tw-border-opacity));
-}
-
-.border-gray-700 {
-  --tw-border-opacity: 1;
-  border-color: rgb(55 65 81 / var(--tw-border-opacity));
 }
 
 .bg-main-dark\/50 {
@@ -825,8 +820,16 @@ video {
   padding-bottom: 1rem;
 }
 
+.pb-8 {
+  padding-bottom: 2rem;
+}
+
 .pl-4 {
   padding-left: 1rem;
+}
+
+.pt-4 {
+  padding-top: 1rem;
 }
 
 .pt-8 {
@@ -897,11 +900,6 @@ video {
   color: rgb(223 221 221 / var(--tw-text-opacity));
 }
 
-.text-accent-dark {
-  --tw-text-opacity: 1;
-  color: rgb(46 46 47 / var(--tw-text-opacity));
-}
-
 .text-black {
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity));
@@ -940,10 +938,6 @@ video {
 .text-yellow-500 {
   --tw-text-opacity: 1;
   color: rgb(234 179 8 / var(--tw-text-opacity));
-}
-
-.underline {
-  text-decoration-line: underline;
 }
 
 .shadow-sm {
@@ -995,6 +989,10 @@ video {
 
 .scrollbar::-webkit-scrollbar-thumb:hover {
   background: #6c66667e;
+}
+
+.rendering {
+  image-rendering: pixelated;
 }
 
 .selection\:bg-sky-400\/70 *::-moz-selection {
@@ -1080,11 +1078,6 @@ video {
   border-color: rgb(44 44 44 / var(--tw-border-opacity));
 }
 
-:is(.dark .dark\:border-gray-400) {
-  --tw-border-opacity: 1;
-  border-color: rgb(156 163 175 / var(--tw-border-opacity));
-}
-
 :is(.dark .dark\:bg-\[\#4B4B4B\]) {
   --tw-bg-opacity: 1;
   background-color: rgb(75 75 75 / var(--tw-bg-opacity));
@@ -1103,11 +1096,6 @@ video {
 :is(.dark .dark\:text-\[\#787878\]) {
   --tw-text-opacity: 1;
   color: rgb(120 120 120 / var(--tw-text-opacity));
-}
-
-:is(.dark .dark\:text-accent) {
-  --tw-text-opacity: 1;
-  color: rgb(223 221 221 / var(--tw-text-opacity));
 }
 
 :is(.dark .dark\:text-accent-dark) {

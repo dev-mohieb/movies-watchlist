@@ -22,5 +22,9 @@
     .scrollbar::-webkit-scrollbar-thumb:hover {
       background: #6c66667e;
     }
+
+    .rendering {
+      image-rendering: pixelated;
+    }
   }
   
