@@ -76,11 +76,11 @@ function getMoviesHtml(movies, btn) {
         width="100"
         height="212"
         alt=""
-        style="aspect-ratio: 10/15; height: 90%;"
+        style="aspect-ratio: 10/15; height: 80%;"
       />
       <!-- Movie info -->
       <section class="h-full max-w-[400px] w-[90%] overflow-y-auto space-y-1 scrollbar"
-        style="padding-top: .5em;">
+        style="padding-top: 1em;">
         <!-- Title -->
         <article class="flex items-center text-xs md:text-sm lg:text-base relative">
           <h2
