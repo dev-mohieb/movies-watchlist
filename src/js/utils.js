@@ -32,8 +32,9 @@ async function fetchMoviesTitles(search, num) {
   } else {
     for (let movie of movies.Search) {
       !titlesArr.includes(movie.Title) ? titlesArr.push(movie.Title) : "";
-      titlesArr.map(title => title.Title = encodeURIComponent(title.Title))
     }
+    // turn movies titles into URI components
+    titlesArr.map(title => title.Title = encodeURIComponent(title.Title))
     // fetch details using titles array
     fetchMoviesDetails(titlesArr);
   }
