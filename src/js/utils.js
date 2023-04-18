@@ -31,12 +31,11 @@ async function fetchMoviesTitles(search, num) {
     main.innerHTML = errorEl;
   } else {
     for (let movie of movies.Search) {
-      !titlesArr.includes(movie.Title) ? titlesArr.push(movie.Title) : "";
+      // check for duplicates + turn movies titles into URI components
+      !titlesArr.includes(movie.Title) ? titlesArr.push(encodeURIComponent(movie.Title)) : "";
     }
-    // turn movies titles into URI components
-    const URIComponentTitles = titlesArr.map(title => encodeURIComponent(title))
     // fetch details using titles array
-    fetchMoviesDetails(URIComponentTitles);
+    fetchMoviesDetails(titlesArr);
   }
 }
 
