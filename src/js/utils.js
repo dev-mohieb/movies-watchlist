@@ -81,7 +81,7 @@ function getMoviesHtml(movies, btn) {
       />
       <!-- Movie info -->
       <section class="h-full max-w-[400px] w-[90%] overflow-y-auto space-y-1 scrollbar"
-        style="">
+        style="margin-top: 1.5em">
         <!-- Title -->
         <article class="flex items-center text-xs md:text-sm lg:text-base relative">
           <h2
