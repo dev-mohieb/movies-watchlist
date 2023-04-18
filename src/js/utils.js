@@ -76,7 +76,7 @@ function getMoviesHtml(movies, btn) {
         width="100"
         height="212"
         alt=""
-        style="aspect-ratio: 10/15;"
+        style="aspect-ratio: 10/15; max-width: 165px;"
       />
       <!-- Movie info -->
       <section class="h-full max-w-[400px] w-[90%] overflow-y-auto space-y-1 scrollbar">
