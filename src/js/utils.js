@@ -68,31 +68,29 @@ function getMoviesHtml(movies, btn) {
 
       return `
       <section
-      class="flex w-full h-[375px] items-center gap-3 border-b border-[#E5E7EB] py-3 text-subtitles dark:border-[#2C2C2C] dark:text-white mt-4 pb-8 px-2 sm:px-4 md:w-1/2"
-      style="height: 340px"
+      class="flex w-full h-[340px] items-center gap-3 border-b border-[#E5E7EB] py-3 text-subtitles dark:border-[#2C2C2C] dark:text-white mt-4 pb-8 px-2 sm:px-4 lg:w-1/2"
       >
       <img
-        class="h-full w-[90%] aspect-[2/1] max-w-[400px] rounded-md object-cover"
+        class="h-full w-[90%] aspect-[10/15] max-w-[200px] rounded-md object-cover"
         src="${poster === "N/A" ? "/images/no-image-placeholder.png" : poster}"
-        width="100"
-        height="212"
+        width="200"
+        height="295"
         alt=""
-        style="aspect-ratio: 10/15; max-width: 200px"
       />
       <!-- Movie info -->
-      <section class="h-full max-w-[400px] w-[90%] overflow-y-auto space-y-1 scrollbar"
-        style="margin-top: 1.5em">
+      <section class="relative h-full max-w-[400px] w-[90%] overflow-y-auto space-y-1 scrollbar">
+        <!-- Rating -->
+        <article class="absolute right-0 top-0 flex items-center ml-auto gap-2 mr-2 text-sm">
+            <i class="fa-solid fa-star text-star"></i>
+            <p class="text-[15px]">${rating}</p>
+          </article>
         <!-- Title -->
-        <article class="flex items-center text-xs md:text-sm lg:text-base relative">
+        <article class="flex items-center mt-6 text-xs md:text-sm lg:text-base">
           <h2
             class="text-lg font-medium text-black dark:text-white md:text-xl lg:text-2xl max-w-[260px]"
           >
             ${title}
           </h2>
-          <article class="absolute right-0 top-0 flex items-center ml-auto gap-2 mr-2 text-sm">
-            <i class="fa-solid fa-star text-star"></i>
-            <p class="text-[15px]">${rating}</p>
-          </article>
         </article>
         <!-- Genre + Add to watchlist -->
         <article class="flex items-center gap-2 text-xs">
