@@ -34,9 +34,9 @@ async function fetchMoviesTitles(search, num) {
       !titlesArr.includes(movie.Title) ? titlesArr.push(movie.Title) : "";
     }
     // turn movies titles into URI components
-    titlesArr.map(title => encodeURIComponent(title))
+    const URIComponentTitles = titlesArr.map(title => encodeURIComponent(title))
     // fetch details using titles array
-    fetchMoviesDetails(titlesArr);
+    fetchMoviesDetails(URIComponentTitles);
   }
 }
 
