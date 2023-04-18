@@ -46,7 +46,7 @@ async function fetchMoviesDetails(titles) {
     );
     const movieWithDetails = await res.json();
     // push newly made movie objects to moviesArr
-    moviesArr.push(movieWithDetails);
+    movieWithDetails.Response === 'True' ? moviesArr.push(movieWithDetails) : ''
   }
   // render movies using moviesArr
   renderMovies(moviesArr);
