@@ -32,7 +32,7 @@ async function fetchMoviesTitles(search, num) {
   } else {
     for (let movie of movies.Search) {
       // check for duplicates + turn movies titles into URI components
-      !titlesArr.includes(movie.Title) ? titlesArr.push(encodeURIComponent(movie.Title)) : "";
+      !titlesArr.includes(encodeURIComponent(movie.Title)) ? titlesArr.push(encodeURIComponent(movie.Title)) : "";
     }
     // fetch details using titles array
     fetchMoviesDetails(titlesArr);
