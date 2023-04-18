@@ -85,9 +85,9 @@ function getMoviesHtml(movies, btn) {
             <p class="text-[15px]">${rating}</p>
           </article>
         <!-- Title -->
-        <article class="flex items-center mt-6 text-xs md:text-sm lg:text-base">
+        <article class="flex items-center text-xs md:text-sm lg:text-base">
           <h2
-            class="text-lg font-medium text-black dark:text-white md:text-xl lg:text-2xl max-w-[260px]"
+            class="text-lg font-medium mt-4 text-black dark:text-white md:text-xl lg:text-2xl max-w-[260px]"
           >
             ${title}
           </h2>
