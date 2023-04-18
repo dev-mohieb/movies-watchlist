@@ -81,7 +81,7 @@ function getMoviesHtml(movies, btn) {
       />
       <!-- Movie info -->
       <section class="h-full max-w-[400px] w-[90%] overflow-y-auto space-y-1 scrollbar"
-        style="margin-top: 1.5em">
+        style="margin-top: 3em">
         <!-- Title -->
         <article class="flex items-center text-xs md:text-sm lg:text-base relative">
           <h2
@@ -89,8 +89,7 @@ function getMoviesHtml(movies, btn) {
           >
             ${title}
           </h2>
-          <article class="absolute right-0 top-0 flex items-center ml-auto gap-2 mr-2 text-sm"
-            style="top: -1.5em">
+          <article class="absolute right-0 top-0 flex items-center ml-auto gap-2 mr-2 text-sm">
             <i class="fa-solid fa-star text-star"></i>
             <p class="text-[15px]">${rating}</p>
           </article>
