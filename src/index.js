@@ -53,7 +53,10 @@ function handleWatchlist(imdbId) {
     return movie.imdbID === imdbId;
   })[0];
   // Check wether the movie's already in the watchlist
-  !watchlist.includes(selectedMovie.imdbId) ? watchlist.unshift(selectedMovie) : "";
+  const alreadyIn = watchlist.filter(movie => {
+    return movie.imdbID === selectedMovie.imdbID
+  })[0]
+  !alreadyIn ? watchlist.unshift(checked) : "";
   // Add the new watchlist to localStorage
   localStorage.setItem("watchlist", JSON.stringify(watchlist));
 }
