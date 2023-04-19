@@ -18,6 +18,7 @@ const moviesArr = [];
 const titlesArr = [];
 const KEY = "ff27a997";
 const main = document.querySelector("main");
+const searchBtn = document.querySelector('#search-btn')
 
 async function fetchMoviesTitles(search, num) {
   main.innerHTML = loading
@@ -124,6 +125,7 @@ function getMoviesHtml(movies, btn) {
 function renderMovies() {
   // call getMoviesHtml with moviesArr and render it's returned value into main
   main.innerHTML = getMoviesHtml(moviesArr, "plus")
+  searchBtn.disabled = false;
 }
 
 // Seperate functions for each mode - might refactor in the future
