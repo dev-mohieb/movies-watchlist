@@ -45,6 +45,7 @@ document.addEventListener("click", (e) => {
     handleWatchlist(e.target.dataset.imdbId);
     e.target.children[0].classList.replace('fa-circle-plus', 'fa-circle-check');
     e.target.children[0].style.color = '#24f820';
+    e.target.disabled = true;
   }
 });
 
