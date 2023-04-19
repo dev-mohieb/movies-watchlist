@@ -138,9 +138,11 @@ function renderMovies() {
 function handleCheckedPreviously() {
   if (watchlist.length > 0) {
     watchlist.forEach(movie => {
-      const buttonIcon = document.querySelector(`button[data-imdb-id=${movie.imdbID}]`).children[0]
+      const button =  document.querySelector(`button[data-imdb-id=${movie.imdbID}]`)
+      const buttonIcon = button.children[0]
         buttonIcon.classList.replace('fa-circle-plus', 'fa-circle-check');
         buttonIcon.style.color = '#24f820';
+        button.disabled = true;
     })
   }
 }
