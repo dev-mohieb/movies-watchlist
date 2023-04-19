@@ -36,8 +36,8 @@ localStorage.getItem("mode") === "dark" ? darkMode() : lightMode();
 toggleBtn.addEventListener("click", handleToggle);
 
 searchForm.addEventListener("submit", (e) => {
-  searchBtn.disabled = true;
   e.preventDefault();
+  searchBtn.disabled = true
   // clear both moviesArr and titlesArr
   moviesArr.length = 0;
   titlesArr.length = 0;
