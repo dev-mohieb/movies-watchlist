@@ -49,17 +49,7 @@ document.addEventListener("click", (e) => {
   }
 });
 
-// makes the buttons of previously checked movies
-// checked and green
-function handleCheckedPreviously() {
-  if (watchlist.length > 0) {
-    watchlist.forEach(movie => {
-      const button = document.querySelector(`button[data-imdb-id=${movie.imdbID}]`)
-        button.classList.replace('fa-circle-plus', 'fa-circle-check');
-        button.style.color = '#24f820';
-    })
-  }
-}
+
 
 function handleWatchlist(imdbId) {
   const selectedMovie = moviesArr.filter((movie) => {

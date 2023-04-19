@@ -19,6 +19,9 @@ const titlesArr = [];
 const KEY = "ff27a997";
 const main = document.querySelector("main");
 const searchBtn = document.querySelector('#search-btn')
+let watchlist = JSON.parse(localStorage.getItem("watchlist"))
+  ? JSON.parse(localStorage.getItem("watchlist"))
+  : [];
 
 async function fetchMoviesTitles(search, num) {
   main.innerHTML = loading
@@ -127,6 +130,18 @@ function renderMovies() {
   // call getMoviesHtml with moviesArr and render it's returned value into main
   main.innerHTML = getMoviesHtml(moviesArr, "plus")
   searchBtn.disabled = false;
+}
+
+// makes the buttons of previously checked movies
+// checked and green
+function handleCheckedPreviously() {
+  if (watchlist.length > 0) {
+    watchlist.forEach(movie => {
+      const button = document.querySelector(`button[data-imdb-id=${movie.imdbID}]`)
+        button.classList.replace('fa-circle-plus', 'fa-circle-check');
+        button.style.color = '#24f820';
+    })
+  }
 }
 
 // Seperate functions for each mode - might refactor in the future
