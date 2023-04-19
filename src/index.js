@@ -9,6 +9,7 @@ import {
 
 const toggleBtn = document.querySelector("#toggle");
 const searchForm = document.querySelector("#search-form");
+const searchBtn = document.querySelector('#search-btn')
 // if there's a watchlist array in storage, set it to that,
 // otherwise, set it to an empty array so it can update itself
 // once a movie gets added to the watchlist
@@ -26,6 +27,7 @@ localStorage.getItem("mode") === "dark" ? darkMode() : lightMode();
 toggleBtn.addEventListener("click", handleToggle);
 
 searchForm.addEventListener("submit", (e) => {
+  searchBtn.disabled = true;
   e.preventDefault();
   // clear both moviesArr and titlesArr
   moviesArr.length = 0;
@@ -36,6 +38,7 @@ searchForm.addEventListener("submit", (e) => {
 
   // fetch titles using searched input
   fetchMoviesTitles(searchItem, page);
+  searchBtn.disabled = false;
 });
 
 document.addEventListener("click", (e) => {
