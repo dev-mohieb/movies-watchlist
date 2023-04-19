@@ -54,7 +54,7 @@ document.addEventListener("click", (e) => {
 function handleCheckedPreviously() {
   if (watchlist.length > 0) {
     watchlist.forEach(movie => {
-      const button = document.querySelector(`button[data-imdb-id="${movie.imdbID}"]`)
+      const button = document.querySelector(`button[data-imdb-id=${movie.imdbID}]`)
         button.classList.replace('fa-circle-plus', 'fa-circle-check');
         button.style.color = '#24f820';
     })
