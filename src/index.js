@@ -58,7 +58,7 @@ function handleWatchlist(imdbId) {
   const alreadyIn = watchlist.filter(movie => {
     return movie.imdbID === selectedMovie.imdbID
   })[0]
-  !alreadyIn ? watchlist.unshift(checked) : "";
+  !alreadyIn ? watchlist.unshift(alreadyIn) : "";
   // Add the new watchlist to localStorage
   localStorage.setItem("watchlist", JSON.stringify(watchlist));
 }
