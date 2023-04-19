@@ -52,9 +52,8 @@ function handleWatchlist(imdbId) {
   const selectedMovie = moviesArr.filter((movie) => {
     return movie.imdbID === imdbId;
   })[0];
-  selectedMovie.isInWatchlist = true;
   // Check wether the movie's already in the watchlist
-  !watchlist.includes(selectedMovie) ? watchlist.unshift(selectedMovie) : "";
+  !watchlist.includes(selectedMovie.imdbId) ? watchlist.unshift(selectedMovie) : "";
   // Add the new watchlist to localStorage
   localStorage.setItem("watchlist", JSON.stringify(watchlist));
 }
