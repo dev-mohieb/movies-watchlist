@@ -38,6 +38,7 @@ searchForm.addEventListener("submit", (e) => {
 
   // fetch titles using searched input
   fetchMoviesTitles(searchItem, page);
+  handleCheckedPreviously();
 });
 
 document.addEventListener("click", (e) => {
@@ -47,6 +48,18 @@ document.addEventListener("click", (e) => {
     e.target.children[0].style.color = '#24f820';
   }
 });
+
+// makes the buttons of previously checked movies
+// checked and green
+function handleCheckedPreviously() {
+  if (watchlist.length > 0) {
+    watchlist.forEach(movie => {
+      const button = document.querySelector(`button[data-imdb-id="${movie.imdbID}"]`)
+        button.classList.replace('fa-circle-plus', 'fa-circle-check');
+        button.style.color = '#24f820';
+    })
+  }
+}
 
 function handleWatchlist(imdbId) {
   const selectedMovie = moviesArr.filter((movie) => {
