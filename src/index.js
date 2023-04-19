@@ -10,6 +10,8 @@ import {
 const toggleBtn = document.querySelector("#toggle");
 const searchForm = document.querySelector("#search-form");
 const searchBtn = document.querySelector('#search-btn')
+
+cleanWatchlist()
 // if there's a watchlist array in storage, set it to that,
 // otherwise, set it to an empty array so it can update itself
 // once a movie gets added to the watchlist
@@ -19,6 +21,13 @@ let watchlist = JSON.parse(localStorage.getItem("watchlist"))
 
 // will later implement search pages
 let page = 1;
+
+// fix some niche scenario
+function cleanWatchlist() {
+  watchlist.includes(null) || watchlist.includes(undefined)
+  ? localStorage.removeItem('watchlist')
+  : ''
+}
 
 // Check mode and set it
 localStorage.getItem("mode") === "dark" ? darkMode() : lightMode();
