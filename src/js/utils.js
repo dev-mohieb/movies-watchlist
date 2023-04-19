@@ -129,6 +129,7 @@ function getMoviesHtml(movies, btn) {
 function renderMovies() {
   // call getMoviesHtml with moviesArr and render it's returned value into main
   main.innerHTML = getMoviesHtml(moviesArr, "plus")
+  handleCheckedPreviously()
   searchBtn.disabled = false;
 }
 

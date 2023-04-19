@@ -38,7 +38,6 @@ searchForm.addEventListener("submit", (e) => {
 
   // fetch titles using searched input
   fetchMoviesTitles(searchItem, page);
-  handleCheckedPreviously();
 });
 
 document.addEventListener("click", (e) => {
