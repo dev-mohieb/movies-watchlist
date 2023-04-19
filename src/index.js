@@ -56,10 +56,11 @@ function handleWatchlist(imdbId) {
   })[0];
   // Check wether the movie's already in the watchlist
   // This solution will be refactored later
-  if (watchlist.length < 0) {
+  if (watchlist.length) {
     const alreadyIn = watchlist.filter(movie => {
       return movie.imdbID === selectedMovie.imdbID
     })[0]
+    
     !alreadyIn ? watchlist.unshift(alreadyIn) : "";
 
   } else {
