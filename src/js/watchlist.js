@@ -46,8 +46,14 @@ function handleRemoveBtn(imdbId) {
 }
 
 function checkMoviesNum(arr) {
-  arr.length === 0 ? (main.innerHTML = explore) : renderMovieCards(arr);
-  main.classList.remove('h-[75vh]')
+  if (arr.length === 0){
+    main.classList.add('h-[75vh]')
+    main.innerHTML = explore;
+  } else {
+    main.classList.remove('h-[75vh]')
+    renderMovieCards(arr);
+
+  }
 }
 
 function renderMovieCards(arr) {
