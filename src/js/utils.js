@@ -30,6 +30,7 @@ async function fetchMoviesTitles(search, num) {
   // push titles into array of titles
   if (movies.Response === "False") {
     main.innerHTML = errorEl;
+    searchBtn.disabled = false;
   } else {
     for (let movie of movies.Search) {
       // check for duplicates + turn movies titles into URI components
