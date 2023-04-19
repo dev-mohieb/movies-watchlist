@@ -11,7 +11,7 @@ const toggleBtn = document.querySelector("#toggle");
 const searchForm = document.querySelector("#search-form");
 const searchBtn = document.querySelector('#search-btn')
 
-cleanWatchlist()
+// cleanWatchlist()
 // if there's a watchlist array in storage, set it to that,
 // otherwise, set it to an empty array so it can update itself
 // once a movie gets added to the watchlist
