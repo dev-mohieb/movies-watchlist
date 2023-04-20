@@ -143,8 +143,10 @@ function handleCheckedPreviously() {
         buttonIcon.classList.replace('fa-circle-plus', 'fa-circle-check');
         buttonIcon.style.color = '#24f820';
         button.disabled = true;
-    }) else return
-  }
+    })
+  } else {
+      return;
+    }
 }
 
 // Seperate functions for each mode - might refactor in the future
