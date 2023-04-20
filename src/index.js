@@ -21,7 +21,6 @@ let watchlist = JSON.parse(localStorage.getItem("watchlist"))
 
 // will later implement search pages
 let page = 1;
-localStorage.clear()
 
 // Check mode and set it
 localStorage.getItem("mode") === "dark" ? darkMode() : lightMode();
