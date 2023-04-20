@@ -126,8 +126,8 @@ function getMoviesHtml(movies, btn) {
 function renderMovies() {
   // call getMoviesHtml with moviesArr and render it's returned value into main
   main.innerHTML = getMoviesHtml(moviesArr, "plus")
-  handleCheckedPreviously()
   searchBtn.disabled = false;
+  handleCheckedPreviously()
 }
 
 // makes the buttons of previously checked movies
@@ -139,11 +139,14 @@ function handleCheckedPreviously() {
 
   if (watchlist.length > 0) {
     watchlist.forEach(movie => {
-      const button =  document.querySelector(`button[data-imdb-id=${movie.imdbID}]`)
-      const buttonIcon = button.children[0]
-        buttonIcon.classList.replace('fa-circle-plus', 'fa-circle-check');
-        buttonIcon.style.color = '#24f820';
-        button.disabled = true;
+      if(document.querySelector(`button[data-imdb-id=${movie.imdbID}]`)) {
+        const button =  document.querySelector(`button[data-imdb-id=${movie.imdbID}]`)
+        const buttonIcon = button.children[0]
+          buttonIcon.classList.replace('fa-circle-plus', 'fa-circle-check');
+          buttonIcon.style.color = '#24f820';
+          button.disabled = true;
+      }
+      
     })
   } else {
       return;
