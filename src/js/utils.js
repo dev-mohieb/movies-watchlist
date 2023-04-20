@@ -172,7 +172,6 @@ export {
   moviesArr,
   titlesArr,
   handleToggle,
-  handleCheckedPreviously,
   darkMode,
   lightMode,
 };
