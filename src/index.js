@@ -3,7 +3,6 @@ import {
   moviesArr,
   titlesArr,
   handleToggle,
-  handleCheckedPreviously,
   darkMode,
   lightMode,
 } from "/js/utils.js";
@@ -22,7 +21,7 @@ let watchlist = JSON.parse(localStorage.getItem("watchlist"))
 
 // will later implement search pages
 let page = 1;
-
+localStorage.clear()
 
 // Check mode and set it
 localStorage.getItem("mode") === "dark" ? darkMode() : lightMode();
@@ -52,8 +51,6 @@ document.addEventListener("click", (e) => {
     e.target.disabled = true;
   }
 });
-
-
 
 function handleWatchlist(imdbId) {
   const selectedMovie = moviesArr.filter((movie) => {
