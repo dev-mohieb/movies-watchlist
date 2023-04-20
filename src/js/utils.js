@@ -138,7 +138,7 @@ function handleCheckedPreviously() {
   : [];
 
   if (watchlist.length > 0) {
-    watchlist.forEach(movie => {
+    for (let movie of watchlist) {
       if(document.querySelector(`button[data-imdb-id=${movie.imdbID}]`)) {
         const button =  document.querySelector(`button[data-imdb-id=${movie.imdbID}]`)
         const buttonIcon = button.children[0]
@@ -146,25 +146,20 @@ function handleCheckedPreviously() {
           buttonIcon.style.color = '#24f820';
           button.disabled = true;
       }
-      
-    })
-  } else {
-      return;
     }
+  }
 }
 
 // Seperate functions for each mode - might refactor in the future
 function lightMode() {
   localStorage.setItem("mode", "light");
   document.querySelector("html").classList.remove("dark");
-  document.querySelector("#toggle > i").classList.add("fa-sun");
-  document.querySelector("#toggle > i").classList.remove("fa-moon");
+  document.querySelector("#toggle > i").classList.replace("fa-moon", "fa-sun");
 }
 function darkMode() {
   localStorage.setItem("mode", "dark");
   document.querySelector("html").classList.add("dark");
-  document.querySelector("#toggle > i").classList.add("fa-moon");
-  document.querySelector("#toggle > i").classList.remove("fa-sun");
+  document.querySelector("#toggle > i").classList.replace("fa-sun", "fa-moon");
 }
 function handleToggle() {
   document.querySelector("html").classList.contains("dark")
