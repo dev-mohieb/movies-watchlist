@@ -30,6 +30,7 @@ async function fetchMoviesTitles(search, num) {
   // push titles into array of titles
   if (movies.Response === "False") {
     main.innerHTML = errorEl;
+    main.style.height = '75vh'
     searchBtn.disabled = false;
   } else {
     for (let movie of movies.Search) {
@@ -126,6 +127,7 @@ function getMoviesHtml(movies, btn) {
 function renderMovies() {
   // call getMoviesHtml with moviesArr and render it's returned value into main
   main.innerHTML = getMoviesHtml(moviesArr, "plus")
+  main.style.height = 'auto'
   searchBtn.disabled = false;
   handleCheckedPreviously()
 }
