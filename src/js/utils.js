@@ -143,7 +143,7 @@ function handleCheckedPreviously() {
         buttonIcon.classList.replace('fa-circle-plus', 'fa-circle-check');
         buttonIcon.style.color = '#24f820';
         button.disabled = true;
-    })
+    }) else return
   }
 }
 
@@ -172,6 +172,7 @@ export {
   moviesArr,
   titlesArr,
   handleToggle,
+  handleCheckedPreviously,
   darkMode,
   lightMode,
 };
