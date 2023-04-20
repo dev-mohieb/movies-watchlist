@@ -3,6 +3,7 @@ import {
   moviesArr,
   titlesArr,
   handleToggle,
+  handleCheckedPreviously,
   darkMode,
   lightMode,
 } from "/js/utils.js";
@@ -30,8 +31,8 @@ localStorage.getItem("mode") === "dark" ? darkMode() : lightMode();
 toggleBtn.addEventListener("click", handleToggle);
 
 searchForm.addEventListener("submit", (e) => {
-  e.preventDefault();
   searchBtn.disabled = true
+  e.preventDefault();
   // clear both moviesArr and titlesArr
   moviesArr.length = 0;
   titlesArr.length = 0;
@@ -58,9 +59,7 @@ function handleWatchlist(imdbId) {
   const selectedMovie = moviesArr.filter((movie) => {
     return movie.imdbID === imdbId;
   })[0];
-  
     watchlist.unshift(selectedMovie)
-  
   // Add the new watchlist to localStorage
   localStorage.setItem("watchlist", JSON.stringify(watchlist));
 }
