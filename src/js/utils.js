@@ -19,9 +19,6 @@ const titlesArr = [];
 const KEY = "ff27a997";
 const main = document.querySelector("main");
 const searchBtn = document.querySelector('#search-btn')
-let watchlist = JSON.parse(localStorage.getItem("watchlist"))
-  ? JSON.parse(localStorage.getItem("watchlist"))
-  : [];
 
 async function fetchMoviesTitles(search, num) {
   main.innerHTML = loading
@@ -136,6 +133,10 @@ function renderMovies() {
 // makes the buttons of previously checked movies
 // checked and green
 function handleCheckedPreviously() {
+  const watchlist = JSON.parse(localStorage.getItem("watchlist"))
+  ? JSON.parse(localStorage.getItem("watchlist"))
+  : [];
+
   if (watchlist.length > 0) {
     watchlist.forEach(movie => {
       const button =  document.querySelector(`button[data-imdb-id=${movie.imdbID}]`)
