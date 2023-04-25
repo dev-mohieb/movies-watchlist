@@ -71,7 +71,8 @@ function enableSearchBtn() {
   searchBtn.innerHTML = 'Search'
   searchBtn.disabled = false;
 }
-// 
+
+// to render immediatly
 class Movie{
   constructor(data){
     Object.assign(this, data)
@@ -134,7 +135,8 @@ class Movie{
       `
   }
 }
-// 
+
+// will refactor later - for watchlist only
 function getMoviesHtml(movies, btn) {
   return movies
     .map((movie) => {
