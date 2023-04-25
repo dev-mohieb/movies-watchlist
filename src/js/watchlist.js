@@ -52,7 +52,6 @@ function checkMoviesNum(arr) {
   } else {
     main.classList.remove('h-[75vh]')
     renderMovieCards(arr);
-
   }
 }
 

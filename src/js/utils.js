@@ -43,22 +43,96 @@ async function fetchMoviesTitles(search, num) {
 
 async function fetchMoviesDetails(titles) {
   // loop over each titles and fetch each movie individually using the ' ?t= ' query
+  main.innerHTML = ''
+  searchBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin text-lg pointer-events-none"></i>`
+
   for (let title of titles) {
     const res = await fetch(
       `https://www.omdbapi.com/?t=${title}&apikey=${KEY}`
     );
     const movieWithDetails = await res.json();
-    // push newly made movie objects to moviesArr
     if (movieWithDetails.Response === 'True') {
-      !moviesArr.includes(movieWithDetails.Title)
-       ? moviesArr.push(movieWithDetails)
-       : ''
+      // check for duplicates
+      if (!moviesArr.includes(movieWithDetails.Title)) {
+        const movie = new Movie(movieWithDetails)
+        // use the getHtml method to render each movie as it gets fetched
+        main.innerHTML += movie.getHtml('plus')
+        // push the movie with it's method to moviesArr
+        moviesArr.push(movie)
+        handleCheckedPreviously()
+      }
     }
   }
-  // render movies using moviesArr
-  renderMovies(moviesArr);
+  enableSearchBtn()
 }
-
+function enableSearchBtn() {
+  searchBtn.innerHTML = 'Search'
+  searchBtn.disabled = false;
+}
+// 
+class Movie{
+  constructor(data){
+    Object.assign(this, data)
+  }
+  getHtml(btn) {
+    const {
+      Title: title,
+      Runtime: runtime,
+      Genre: genre,
+      Plot: plot,
+      Poster: poster,
+      imdbRating: rating,
+      imdbID,
+    } = this;
+    return `
+      <section
+      class="flex w-full h-[340px] justify-center items-center gap-3 border-b border-[#E5E7EB] py-3 text-subtitles dark:border-[#2C2C2C] dark:text-white mt-4 pb-8 px-2 sm:px-4 lg:w-1/2"
+      >
+      <img
+        class="h-full w-[90%] aspect-[10/15] max-w-[200px] rounded-md object-cover"
+        src="${poster === "N/A" ? "/images/no-image-placeholder.png" : poster}"
+        width="200"
+        height="295"
+        alt=""
+      />
+      <!-- Movie info -->
+      <section class="relative h-full max-w-[400px] w-[90%] overflow-y-auto space-y-1 scrollbar">
+        <!-- Rating -->
+        <article class="absolute right-0 top-0 flex items-center ml-auto gap-2 mr-2 text-sm">
+            <i class="fa-solid fa-star text-star"></i>
+            <p class="text-[15px]">${rating}</p>
+          </article>
+        <!-- Title -->
+        <article class="flex items-center text-xs md:text-sm lg:text-base">
+          <h2
+            class="text-lg font-medium mt-4 text-black dark:text-white md:text-xl lg:text-2xl max-w-[260px]"
+          >
+            ${title}
+          </h2>
+        </article>
+        <!-- Genre + Add to watchlist -->
+        <article class="flex items-center gap-2 text-xs">
+          <p class="">${runtime}</p>
+          <p class="">${genre}</p>
+          <button
+            data-imdb-id="${imdbID}"
+            class="ml-auto mr-2 flex cursor-default items-center gap-[6px] text-sm md:cursor-pointer px-1 active:scale-95 hover:scale-105 transition-transform disabled:active:scale-100 disabled:hover:scale-100"
+          >
+            <i class="fa-solid fa-circle-${btn} text-lg pointer-events-none"></i>
+          </button>
+        </article>
+        <!-- Description -->
+        <section class="max-w-[400px] h-fit mt-2 text-sm text-desc dark:text-desc-dark">
+          <p>
+            ${plot}
+          </p>
+        </section>
+      </section>
+    </section>
+      `
+  }
+}
+// 
 function getMoviesHtml(movies, btn) {
   return movies
     .map((movie) => {
@@ -123,13 +197,6 @@ function getMoviesHtml(movies, btn) {
     .join("");
 }
 
-function renderMovies() {
-  // call getMoviesHtml with moviesArr and render it's returned value into main
-  main.innerHTML = getMoviesHtml(moviesArr, "plus")
-  searchBtn.disabled = false;
-  handleCheckedPreviously()
-}
-
 // makes the buttons of previously checked movies
 // checked and green
 function handleCheckedPreviously() {
@@ -146,11 +213,8 @@ function handleCheckedPreviously() {
           buttonIcon.style.color = '#24f820';
           button.disabled = true;
       }
-      
     })
-  } else {
-      return;
-    }
+  }
 }
 
 // Seperate functions for each mode - might refactor in the future
