@@ -22,6 +22,7 @@ const searchBtn = document.querySelector('#search-btn')
 
 async function fetchMoviesTitles(search, num) {
   main.innerHTML = loading
+  main.classList.add('h-[75vh]')
   // fetch 10 movie titles using the ' ?s= ' query
   const res = await fetch(
     `https://www.omdbapi.com/?s=${search}&apikey=${KEY}&page=${num}`
@@ -30,6 +31,7 @@ async function fetchMoviesTitles(search, num) {
   // push titles into array of titles
   if (movies.Response === "False") {
     main.innerHTML = errorEl;
+    main.classList.add('h-[75vh]')
     searchBtn.disabled = false;
   } else {
     for (let movie of movies.Search) {
@@ -205,7 +207,7 @@ function handleCheckedPreviously() {
   : [];
 
   if (watchlist.length > 0) {
-    watchlist.forEach(movie => {
+    for (let movie of watchlist) {
       if(document.querySelector(`button[data-imdb-id=${movie.imdbID}]`)) {
         const button =  document.querySelector(`button[data-imdb-id=${movie.imdbID}]`)
         const buttonIcon = button.children[0]
@@ -213,7 +215,7 @@ function handleCheckedPreviously() {
           buttonIcon.style.color = '#24f820';
           button.disabled = true;
       }
-    })
+    }
   }
 }
 
@@ -221,14 +223,12 @@ function handleCheckedPreviously() {
 function lightMode() {
   localStorage.setItem("mode", "light");
   document.querySelector("html").classList.remove("dark");
-  document.querySelector("#toggle > i").classList.add("fa-sun");
-  document.querySelector("#toggle > i").classList.remove("fa-moon");
+  document.querySelector("#toggle > i").classList.replace("fa-moon", "fa-sun");
 }
 function darkMode() {
   localStorage.setItem("mode", "dark");
   document.querySelector("html").classList.add("dark");
-  document.querySelector("#toggle > i").classList.add("fa-moon");
-  document.querySelector("#toggle > i").classList.remove("fa-sun");
+  document.querySelector("#toggle > i").classList.replace("fa-sun", "fa-moon");
 }
 function handleToggle() {
   document.querySelector("html").classList.contains("dark")
