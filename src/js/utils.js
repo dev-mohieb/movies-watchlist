@@ -36,7 +36,9 @@ async function fetchMoviesTitles(search, num) {
   } else {
     for (let movie of movies.Search) {
       // check for duplicates + turn movies titles into URI components
-      !titlesArr.includes(encodeURIComponent(movie.Title)) ? titlesArr.push(encodeURIComponent(movie.Title)) : "";
+      !titlesArr.find(movieTitle => movieTitle.Title === encodeURIComponent(movie.Title))
+      ? titlesArr.push(encodeURIComponent(movie.Title))
+      : "";
     }
     // fetch details using titles array
     fetchMoviesDetails(titlesArr);
@@ -47,22 +49,26 @@ async function fetchMoviesDetails(titles) {
   // loop over each titles and fetch each movie individually using the ' ?t= ' query
   main.innerHTML = ''
   searchBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin text-lg pointer-events-none"></i>`
+  const watchlist = JSON.parse(localStorage.getItem("watchlist"))
+        ? JSON.parse(localStorage.getItem("watchlist"))
+        : [];
 
   for (let title of titles) {
     const res = await fetch(
       `https://www.omdbapi.com/?t=${title}&apikey=${KEY}`
     );
     const movieWithDetails = await res.json();
-    if (movieWithDetails.Response === 'True') {
+    if (movieWithDetails.Response === 'True' && !moviesArr.find(mov => mov.Title === movieWithDetails.Title)) {
       // check for duplicates
-      if (!moviesArr.includes(movieWithDetails.Title)) {
         const movie = new Movie(movieWithDetails)
         // use the getHtml method to render each movie as it gets fetched
         main.innerHTML += movie.getHtml('plus')
+
+        watchlist.find(mov => mov.Title === movie.Title)
+        ? addCheckToMovie(movie)
+        : ''
         // push the movie with it's method to moviesArr
         moviesArr.push(movie)
-        handleCheckedPreviously()
-      }
     }
   }
   enableSearchBtn()
@@ -201,24 +207,14 @@ function getMoviesHtml(movies, btn) {
     .join("");
 }
 
-// makes the buttons of previously checked movies
-// checked and green
-function handleCheckedPreviously() {
-  const watchlist = JSON.parse(localStorage.getItem("watchlist"))
-  ? JSON.parse(localStorage.getItem("watchlist"))
-  : [];
+// refactored check movies added to watchlist
 
-  if (watchlist.length > 0) {
-    for (let movie of watchlist) {
-      if(document.querySelector(`button[data-imdb-id=${movie.imdbID}]`)) {
+function addCheckToMovie(movie) {
         const button =  document.querySelector(`button[data-imdb-id=${movie.imdbID}]`)
         const buttonIcon = button.children[0]
           buttonIcon.classList.replace('fa-circle-plus', 'fa-circle-check');
           buttonIcon.style.color = '#24f820';
           button.disabled = true;
-      }
-    }
-  }
 }
 
 // Seperate functions for each mode - might refactor in the future
