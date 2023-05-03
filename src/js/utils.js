@@ -15,7 +15,6 @@ const loading = `
     `;
 
 const moviesArr = [];
-const titlesArr = [];
 const KEY = "ff27a997";
 const main = document.querySelector("main");
 const searchBtn = document.querySelector('#search-btn')
@@ -34,43 +33,37 @@ async function fetchMoviesTitles(search, num) {
     main.classList.add('h-[75vh]')
     searchBtn.disabled = false;
   } else {
+    main.innerHTML = ''
+    main.classList.remove('h-[75vh]')
+    searchBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin text-lg pointer-events-none"></i>`
     for (let movie of movies.Search) {
-      // check for duplicates + turn movies titles into URI components
-      !titlesArr.find(movieTitle => movieTitle.Title === encodeURIComponent(movie.Title))
-      ? titlesArr.push(encodeURIComponent(movie.Title))
-      : "";
+      // fetch movie details using the URI version of the titles
+      // to avoid any issues while searching
+      fetchMoviesDetails(encodeURIComponent(movie.Title));
     }
-    // fetch details using titles array
-    fetchMoviesDetails(titlesArr);
   }
 }
 
-async function fetchMoviesDetails(titles) {
-  // loop over each titles and fetch each movie individually using the ' ?t= ' query
-  main.innerHTML = ''
-  searchBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin text-lg pointer-events-none"></i>`
+async function fetchMoviesDetails(movieTitle) {
   const watchlist = JSON.parse(localStorage.getItem("watchlist"))
         ? JSON.parse(localStorage.getItem("watchlist"))
         : [];
 
-  for (let title of titles) {
     const res = await fetch(
-      `https://www.omdbapi.com/?t=${title}&apikey=${KEY}`
+      `https://www.omdbapi.com/?t=${movieTitle}&apikey=${KEY}`
     );
-    const movieWithDetails = await res.json();
-    if (movieWithDetails.Response === 'True' && !moviesArr.find(mov => mov.Title === movieWithDetails.Title)) {
-      // check for duplicates
-        const movie = new Movie(movieWithDetails)
+    const detailedMovie = await res.json();
+    if (detailedMovie.Response === 'True'
+      && !moviesArr.find(prevMovie => prevMovie.Title === detailedMovie.Title)) {
+        const newMovie = new Movie(detailedMovie)
         // use the getHtml method to render each movie as it gets fetched
-        main.innerHTML += movie.getHtml('plus')
+        main.innerHTML += newMovie.getHtml('plus')
 
-        watchlist.find(mov => mov.Title === movie.Title)
-        ? addCheckToMovie(movie)
+        watchlist.find(prevMovie => prevMovie.Title === newMovie.Title)
+        ? addCheckToMovie(newMovie)
         : ''
-        // push the movie with it's method to moviesArr
-        moviesArr.push(movie)
+        moviesArr.push(newMovie)
     }
-  }
   enableSearchBtn()
 }
 function enableSearchBtn() {
@@ -78,7 +71,7 @@ function enableSearchBtn() {
   searchBtn.disabled = false;
 }
 
-// to render immediatly
+// add class with getHtml method to render movies immediatly
 class Movie{
   constructor(data){
     Object.assign(this, data)
@@ -207,7 +200,8 @@ function getMoviesHtml(movies, btn) {
     .join("");
 }
 
-// refactored check movies added to watchlist
+// add a check icon on the button for movies that are
+// already in the watchlist
 
 function addCheckToMovie(movie) {
         const button =  document.querySelector(`button[data-imdb-id=${movie.imdbID}]`)
@@ -238,7 +232,6 @@ export {
   fetchMoviesTitles,
   getMoviesHtml,
   moviesArr,
-  titlesArr,
   handleToggle,
   darkMode,
   lightMode,

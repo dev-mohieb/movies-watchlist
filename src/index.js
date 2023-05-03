@@ -1,7 +1,6 @@
 import {
   fetchMoviesTitles,
   moviesArr,
-  titlesArr,
   handleToggle,
   darkMode,
   lightMode,
@@ -31,9 +30,8 @@ toggleBtn.addEventListener("click", handleToggle);
 searchForm.addEventListener("submit", (e) => {
   e.preventDefault();
   searchBtn.disabled = true
-  // clear both moviesArr and titlesArr
+  // clear moviesArr
   moviesArr.length = 0;
-  titlesArr.length = 0;
   // get searched input
   const formData = new FormData(searchForm);
   const searchItem = formData.get("search").trim();
@@ -59,5 +57,3 @@ function handleWatchlist(imdbId) {
   // Add the new watchlist to localStorage
   localStorage.setItem("watchlist", JSON.stringify(watchlist));
 }
-
-export { moviesArr, titlesArr };
